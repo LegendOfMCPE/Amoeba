@@ -1,4 +1,4 @@
-package eu.legionpvp.amoeba;
+package io.github.legendofmcpe.amoeba.network.nerves;
 
 /*
  * This file is part of Amoeba.
@@ -17,39 +17,30 @@ package eu.legionpvp.amoeba;
  * along with Amoeba.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-import eu.legionpvp.amoeba.network.client.ClientManager;
 import lombok.Getter;
-import lombok.Setter;
+
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.OutputStream;
+import java.net.Socket;
 
 @Getter
-public class AmoebaServer{
-	private static AmoebaServer instance;
-	private static int clientCount = 0;
+public class Nerve{
+	private final Socket socket;
+	private final InputStream in;
+	private final OutputStream out;
+	private final long creation;
 
-	private ClientManager clientManager;
-	@Setter
-	private int port;
+	private boolean authenticated;
 
-	public static void init(){
-		instance = new AmoebaServer();
+	public Nerve(Socket socket) throws IOException{
+		this.socket = socket;
+		in = socket.getInputStream();
+		out = socket.getOutputStream();
+		creation = System.currentTimeMillis();
 	}
 
-	public static AmoebaServer getInstance(){
-		return instance;
-	}
+	public void tick(){
 
-	private AmoebaServer(){
-	}
-
-	public void start(){
-		clientManager = new ClientManager(port);
-	}
-
-	public static int getClientCount(){
-		return clientCount;
-	}
-
-	public static int getNextClientId(){
-		return clientCount++;
 	}
 }

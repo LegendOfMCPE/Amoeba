@@ -1,4 +1,4 @@
-package eu.legionpvp.amoeba.network.client;
+package io.github.legendofmcpe.amoeba.network.nerves.protocol;
 
 /*
  * This file is part of Amoeba.
@@ -17,28 +17,26 @@ package eu.legionpvp.amoeba.network.client;
  * along with Amoeba.  If not, see <http://www.gnu.org/licenses/>.
  */
 
+import io.github.legendofmcpe.amoeba.network.PacketType;
 import lombok.Getter;
+import lombok.Setter;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.nio.ByteBuffer;
 
+@PacketType(Neurotransmitter.ADD_CLIENT)
 @Getter
-public class ClientManager{
-	private static ClientManager instance;
+@Setter
+public class AddClientImpulse extends NerveImpulse{
+	private long clientId;
+	private String address;
+	private short port;
 
-	private final NonBlockDatagramSocket socket;
-	private final List<Client> clients = new ArrayList<>();
-
-	public ClientManager(int port){
-		instance = this;
-		socket = new NonBlockDatagramSocket(port);
-	}
-
-	public void tickProcess(){
-
-	}
-
-	public static ClientManager getInstance(){
-		return instance;
+	@Override
+	public ByteBuffer emit(){
+		return ByteBuffer.allocate(address.length() + 12)
+				.putLong(clientId)
+				.putShort((short) address.length())
+				.put(address.getBytes())
+				.putShort(port);
 	}
 }

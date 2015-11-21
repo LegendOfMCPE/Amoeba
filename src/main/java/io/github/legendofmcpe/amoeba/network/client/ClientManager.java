@@ -1,4 +1,4 @@
-package eu.legionpvp.amoeba.network.client;
+package io.github.legendofmcpe.amoeba.network.client;
 
 /*
  * This file is part of Amoeba.
@@ -19,21 +19,26 @@ package eu.legionpvp.amoeba.network.client;
 
 import lombok.Getter;
 
-import java.net.InetSocketAddress;
+import java.util.ArrayList;
+import java.util.List;
 
 @Getter
-public class Client{
-	private final InetSocketAddress address;
+public class ClientManager{
+	private static ClientManager instance;
 
-	public Client(InetSocketAddress address){
-		this.address = address;
+	private final NonBlockDatagramSocket socket;
+	private final List<Client> clients = new ArrayList<>();
+
+	public ClientManager(int port){
+		instance = this;
+		socket = new NonBlockDatagramSocket(port);
 	}
 
-	public void send(byte[] buffer){
-		ClientManager.getInstance().getSocket().send(buffer, address);
+	public void tickProcess(){
+
 	}
 
-	public void handlePacket(){
-		// TODO
+	public static ClientManager getInstance(){
+		return instance;
 	}
 }

@@ -1,4 +1,4 @@
-package eu.legionpvp.amoeba.network.nerves.protocol;
+package io.github.legendofmcpe.amoeba.network.nerves.protocol;
 
 /*
  * This file is part of Amoeba.
@@ -17,7 +17,7 @@ package eu.legionpvp.amoeba.network.nerves.protocol;
  * along with Amoeba.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-import eu.legionpvp.amoeba.network.PacketType;
+import io.github.legendofmcpe.amoeba.network.PacketType;
 
 import java.nio.ByteBuffer;
 

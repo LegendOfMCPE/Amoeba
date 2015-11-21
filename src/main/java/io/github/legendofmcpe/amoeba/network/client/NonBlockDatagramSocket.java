@@ -1,4 +1,4 @@
-package eu.legionpvp.amoeba.network.client;
+package io.github.legendofmcpe.amoeba.network.client;
 
 /*
  * This file is part of Amoeba.

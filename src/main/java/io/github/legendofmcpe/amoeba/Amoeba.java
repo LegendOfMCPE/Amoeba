@@ -1,4 +1,4 @@
-package eu.legionpvp.amoeba.network;
+package io.github.legendofmcpe.amoeba;
 
 /*
  * This file is part of Amoeba.
@@ -17,13 +17,8 @@ package eu.legionpvp.amoeba.network;
  * along with Amoeba.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-import java.lang.annotation.ElementType;
-import java.lang.annotation.Retention;
-import java.lang.annotation.RetentionPolicy;
-import java.lang.annotation.Target;
+public class Amoeba{
+	public static void main(String[] args){
 
-@Retention(RetentionPolicy.RUNTIME)
-@Target(ElementType.TYPE)
-public @interface PacketType{
-	public byte value();
+	}
 }

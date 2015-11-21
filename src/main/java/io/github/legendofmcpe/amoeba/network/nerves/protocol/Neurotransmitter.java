@@ -1,4 +1,4 @@
-package eu.legionpvp.amoeba.network.client;
+package io.github.legendofmcpe.amoeba.network.nerves.protocol;
 
 /*
  * This file is part of Amoeba.
@@ -17,14 +17,10 @@ package eu.legionpvp.amoeba.network.client;
  * along with Amoeba.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-import lombok.Getter;
-import lombok.RequiredArgsConstructor;
-
-import java.net.InetSocketAddress;
-
-@Getter
-@RequiredArgsConstructor
-public class AddressedPacket{
-	private final byte[] buffer;
-	private final InetSocketAddress address;
+public interface Neurotransmitter{
+	public final static byte OPEN_CONNECTION = 0x00;
+	public final static byte ADD_CLIENT = 0x10;
+	public final static byte REMOVE_CLIENT = 0x11;
+	public final static byte TRANSFER_CLIENT = 0x12;
+	public final static byte CLIENT_BATCH = 0x13;
 }

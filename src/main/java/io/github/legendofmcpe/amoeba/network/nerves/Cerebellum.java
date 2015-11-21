@@ -1,4 +1,4 @@
-package eu.legionpvp.amoeba.network.nerves;
+package io.github.legendofmcpe.amoeba.network.nerves;
 
 /*
  * This file is part of Amoeba.
@@ -17,8 +17,8 @@ package eu.legionpvp.amoeba.network.nerves;
  * along with Amoeba.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-import eu.legionpvp.amoeba.network.PacketHandler;
-import eu.legionpvp.amoeba.network.nerves.protocol.NerveImpulse;
+import io.github.legendofmcpe.amoeba.network.PacketHandler;
+import io.github.legendofmcpe.amoeba.network.nerves.protocol.NerveImpulse;
 import lombok.Getter;
 
 import java.io.File;

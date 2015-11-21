@@ -1,4 +1,4 @@
-package eu.legionpvp.amoeba.network.nerves.protocol;
+package io.github.legendofmcpe.amoeba.network.nerves.protocol;
 
 /*
  * This file is part of Amoeba.
@@ -17,30 +17,24 @@ package eu.legionpvp.amoeba.network.nerves.protocol;
  * along with Amoeba.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-import eu.legionpvp.amoeba.network.PacketType;
+import io.github.legendofmcpe.amoeba.network.PacketType;
 import lombok.Getter;
 import lombok.Setter;
 
 import java.nio.ByteBuffer;
 
-@PacketType(Neurotransmitter.REMOVE_CLIENT)
+@PacketType(Neurotransmitter.TRANSFER_CLIENT)
 @Getter
 @Setter
-public class RemoveClientImpulse extends NerveImpulse{
+public class TransferClientImpulse extends NerveImpulse{
 	private long clientId;
-	private String message;
-
-	@Override
-	public ByteBuffer emit(){
-		return ByteBuffer.allocate(message.length() + 10)
-				.putLong(clientId)
-				.putShort((short) message.length())
-				.put(message.getBytes());
-	}
+	private String ip;
+	private short port;
 
 	@Override
 	public void parse(ByteBuffer bb){
 		clientId = bb.getLong();
-		message = getString(bb);
+		ip = getString(bb);
+		port = bb.getShort();
 	}
 }
