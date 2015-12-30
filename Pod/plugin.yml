@@ -1,0 +1,7 @@
+name: Amoeba-Pods
+version: 1.0-SNAPSHOT
+api: [1.13.0]
+main: Amoeba\Pods\PodsPlugin
+author: LegionPE
+authors:
+- PEMapModder
